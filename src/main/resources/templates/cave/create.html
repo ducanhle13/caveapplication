@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new cave</title>
+</head>
+<body  style="text-align: center;">
+<h3>Add new cave</h3>
+<p>
+    <a th:href="@{/caves}">Back to Cave list</a>
+</p>
+
+<th:block th:if="${msg}">
+    <p th:text="${msg}"></p>
+</th:block>
+<form th:action="@{/save-cave}" th:object="${cave}" method="post">
+    <table align="center">
+        <!--<tr>-->
+        <!--<td> <label>Classify :</label>-->
+        <!--<select th:field="*{notesType}">-->
+        <!--<option th:each=" t : ${types}" th:value="${t.id}" th:text="${t.name}" ></option>-->
+        <!--</select></td>-->
+        <!--<td>-->
+        <!--<button><a th:href="@{/types-create}">Create new category</a></button>-->
+        <!--</td>-->
+        <!--</tr>-->
+
+        <tr>
+            <td style="text-align: left">Name</td>
+            <td><label>
+                <input type="text" style="width: 300px; padding: 5px;" th:field="*{name}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Infomation</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{info}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">PhoneNumber</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{phonenumber}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Password</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{password}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Zone</td>
+            <td>
+                <select th:field="*{zone}">
+                    <option th:each="c:${zones}" th:value="${c.id}" th:text="${c.name}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="save"></td>
+        </tr>
+    </table>
+</form>
+<form th:action="@{/caves}" method="get">
+    <label><input type="submit" value="cancel">
+    </label>
+</form>
+</body>
+</html>

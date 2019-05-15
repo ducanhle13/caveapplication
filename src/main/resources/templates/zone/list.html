@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zone List</title>
+</head>
+<body style="text-align: center;">
+<h1>Zone List</h1>
+<p>
+    <a th:href="@{/create-zone}">Add new zone</a>
+</p>
+
+<table border="1px" align="center">
+    <thead>
+    <tr>
+        <th style="width: 150px">Zone name</th>
+        <th colspan="2" style="width: 150px">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="zone : ${zones}">
+        <td th:text="${zone.name}"></td>
+        <td><a th:href="@{/edit-zone/__${zone.id}__}">Edit</a></td>
+        <td><a th:href="@{/delete-zone/__${zone.id}__}"
+               onclick="return confirm('Are you sure to delete this zone???')">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<p>
+    <a href="/caves">Back to Cave list</a>
+</p>
+<footer></footer>
+</body>
+</html>

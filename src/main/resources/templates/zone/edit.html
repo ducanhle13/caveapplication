@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Zone</title>
+</head>
+<body>
+<h3>Edit Zone</h3>
+<p>
+    <a href="/zones">Back to zone list</a>
+</p>
+<th:block th:if="${msg}">
+    <p th:text="${msg}"></p>
+</th:block>
+<form th:action="@{/update-zone}" th:object="${zone}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Zone:</td>
+            <td><label><input type="text" th:field="*{name}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

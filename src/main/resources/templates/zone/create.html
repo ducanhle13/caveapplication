@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new zone</title>
+</head>
+<body  style="text-align: center;">
+<h3>Add new zone</h3>
+<form>
+    <a th:href="@{/zones}">Zone list</a>
+    ||
+    <a th:href="@{/create-zone}">Create new zone</a>
+</form>
+<p></p>
+<th:block th:if="${msg}">
+    <p th:text="${msg}"></p>
+</th:block>
+<form th:action="@{/save-zone}" th:object="${zone}" method="post">
+    <table align="center">
+        <tr>
+            <td>Zone name</td>
+            <td><label>
+                <input type="text" th:field="*{name}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Zone"></td>
+        </tr>
+    </table>
+</form>
+<form th:action="@{/zones}" method="get">
+    <label><input type="submit" value="cancel">
+    </label>
+</form>
+</body>
+</html>

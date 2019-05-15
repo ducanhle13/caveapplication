@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit cave</title>
+</head>
+<body style="text-align: center;">
+<h3>Edit cave</h3>
+<p>
+    <a th:href="@{/caves}">Back to Notes list</a>
+</p>
+<th:block th:if="${msg}">
+    <p th:text="${msg}"></p>
+</th:block>
+<form th:action="@{/update-cave}" th:object="${cave}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table align="center">
+        <!--<tr>-->
+        <!--<th>Classify:</th>-->
+        <!--<td> <label>Classify :</label><select th:field="*{notesType}">-->
+        <!--<option th:each=" t : ${types}" th:value="${t.id}" th:text="${t.name}" ></option>-->
+        <!--</select></td>-->
+        <!--</tr>-->
+
+        <tr>
+            <td style="text-align: left">Name</td>
+            <td><label>
+                <input type="text" style="width: 300px; padding: 5px;" th:field="*{name}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Infomation</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{info}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">PhoneNumber</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{phonenumber}"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">Password</td>
+            <td>
+                <textarea rows="10" style="width: 300px; padding: 5px;" th:field="*{password}"></textarea>
+            </td>
+        </tr>
+        <!--<tr>-->
+            <!--<td>category</td>-->
+            <!--<td>-->
+                <!--<select th:field="*{category}">-->
+                    <!--<option th:each="c:${categorys}" th:text="${c.name}" th:value="${c.id}">-->
+                    <!--</option>-->
+                <!--</select>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update note"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
